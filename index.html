@@ -1,0 +1,1186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forever23 - Premium Fashion Boutique</title>
+    <style>
+        /* Base Styles */
+        :root {
+            --gold: #D4AF37;
+            --silver: #C0C0C0;
+            --diamond: #B9F2FF;
+            --dark-bg: #1a1a1a;
+            --light-text: #f5f5f5;
+            --dark-text: #333;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--dark-bg);
+            color: var(--light-text);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.9), rgba(192, 192, 192, 0.8), rgba(185, 242, 255, 0.7));
+            padding: 20px 0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 2.2rem;
+            font-weight: bold;
+            color: var(--dark-text);
+            text-shadow: 1px 1px 3px rgba(255, 255, 255, 0.7);
+        }
+        
+        .logo span {
+            color: var(--gold);
+        }
+        
+        .contact-info {
+            text-align: right;
+            font-size: 0.9rem;
+        }
+        
+        .contact-info a {
+            color: var(--dark-text);
+            text-decoration: none;
+            margin-left: 15px;
+            transition: color 0.3s;
+        }
+        
+        .contact-info a:hover {
+            color: var(--gold);
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1441986300917-64674bd600d8?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .hero-content h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
+        }
+        
+        .hero-content p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(to right, var(--gold), var(--silver));
+            color: var(--dark-text);
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4);
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(212, 175, 55, 0.6);
+        }
+        
+        /* Categories Section */
+        .categories {
+            padding: 40px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 2.2rem;
+            position: relative;
+        }
+        
+        .section-title:after {
+            content: '';
+            display: block;
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(to right, var(--gold), var(--silver), var(--diamond));
+            margin: 10px auto;
+        }
+        
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 25px;
+        }
+        
+        .category-card {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+        }
+        
+        .category-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(212, 175, 55, 0.3);
+        }
+        
+        .category-image {
+            height: 180px;
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .category-content {
+            padding: 20px;
+        }
+        
+        .category-content h3 {
+            margin-bottom: 15px;
+            font-size: 1.4rem;
+        }
+        
+        .gender-folders {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 15px;
+        }
+        
+        .gender-folder {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        
+        .gender-folder:hover {
+            background: rgba(212, 175, 55, 0.3);
+        }
+        
+        /* Products Section */
+        .products {
+            padding: 40px 0;
+            background: rgba(0, 0, 0, 0.4);
+        }
+        
+        .category-products {
+            display: none;
+            margin-top: 30px;
+        }
+        
+        .category-products.active {
+            display: block;
+        }
+        
+        .gender-section {
+            margin-bottom: 40px;
+        }
+        
+        .gender-title {
+            font-size: 1.6rem;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--gold);
+        }
+        
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 25px;
+        }
+        
+        .product-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            overflow: hidden;
+            transition: transform 0.3s;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .product-card:hover {
+            transform: scale(1.03);
+        }
+        
+        .product-image {
+            height: 250px;
+            background-size: cover;
+            background-position: center;
+            background-color: #f5f5f5;
+        }
+        
+        .product-info {
+            padding: 15px;
+        }
+        
+        .product-name {
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+        }
+        
+        .product-origin {
+            font-size: 0.9rem;
+            color: var(--silver);
+            margin-bottom: 8px;
+        }
+        
+        .product-price {
+            font-size: 1.2rem;
+            color: var(--gold);
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .order-button {
+            display: block;
+            background: linear-gradient(to right, var(--gold), var(--silver));
+            color: var(--dark-text);
+            text-align: center;
+            padding: 8px 15px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: opacity 0.3s;
+        }
+        
+        .order-button:hover {
+            opacity: 0.9;
+        }
+        
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, rgba(26, 26, 26, 0.9), rgba(40, 40, 40, 0.9));
+            padding: 40px 0 20px;
+            margin-top: 60px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .footer-section h3 {
+            font-size: 1.4rem;
+            margin-bottom: 20px;
+            color: var(--gold);
+        }
+        
+        .footer-section p, .footer-section a {
+            color: var(--silver);
+            margin-bottom: 10px;
+            display: block;
+            text-decoration: none;
+        }
+        
+        .footer-section a:hover {
+            color: var(--gold);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--silver);
+            font-size: 0.9rem;
+        }
+        
+        /* Back to Categories Button */
+        .back-button {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--light-text);
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            margin-bottom: 20px;
+            transition: background 0.3s;
+        }
+        
+        .back-button:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        /* Loading State */
+        .loading {
+            text-align: center;
+            padding: 40px;
+            color: var(--silver);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-content">
+            <div class="logo">Forever<span>23</span></div>
+            <div class="contact-info">
+                <p>Bakau, The Gambia</p>
+                <div>
+                    <a href="https://wa.me/2203802120" target="_blank">WhatsApp: +220 380 2120</a>
+                    <a href="mailto:knjie908@gmail.com">Email: knjie908@gmail.com</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container hero-content">
+            <h1>Premium Fashion Collection</h1>
+            <p>Discover our exclusive collection of clothing, accessories, and more from around the world. Quality and style guaranteed.</p>
+            <a href="#categories" class="cta-button">Shop Now</a>
+        </div>
+    </section>
+
+    <!-- Categories Section -->
+    <section id="categories" class="categories">
+        <div class="container">
+            <h2 class="section-title">Our Collections</h2>
+            <div class="categories-grid">
+                <!-- Clothing Category -->
+                <div class="category-card" data-category="clothing">
+                    <div class="category-image" style="background-image: url('https://github.com/forever23-gm/.co/raw/main/IMG-20250925-WA0024.jpg');"></div>
+                    <div class="category-content">
+                        <h3>Clothing</h3>
+                        <p>Stylish outfits for every occasion</p>
+                        <div class="gender-folders">
+                            <div class="gender-folder" data-gender="male">Male</div>
+                            <div class="gender-folder" data-gender="female">Female</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Shoes Category -->
+                <div class="category-card" data-category="shoes">
+                    <div class="category-image" style="background-image: url('https://github.com/forever23-gm/.co/raw/main/IMG-20250925-WA0030.jpg');"></div>
+                    <div class="category-content">
+                        <h3>Shoes</h3>
+                        <p>Footwear for all styles</p>
+                        <div class="gender-folders">
+                            <div class="gender-folder" data-gender="male">Male</div>
+                            <div class="gender-folder" data-gender="female">Female</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Watches Category -->
+                <div class="category-card" data-category="watches">
+                    <div class="category-image" style="background-image: url('https://github.com/forever23-gm/.co/raw/main/IMG-20250925-WA0091.jpg');"></div>
+                    <div class="category-content">
+                        <h3>Watches</h3>
+                        <p>Timeless elegance on your wrist</p>
+                        <div class="gender-folders">
+                            <div class="gender-folder" data-gender="male">Male</div>
+                            <div class="gender-folder" data-gender="female">Female</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Bags Category -->
+                <div class="category-card" data-category="bags">
+                    <div class="category-image" style="background-image: url('https://github.com/forever23-gm/.co/raw/main/IMG-20250925-WA0047.jpg');"></div>
+                    <div class="category-content">
+                        <h3>Bags</h3>
+                        <p>Carry your essentials in style</p>
+                        <div class="gender-folders">
+                            <div class="gender-folder" data-gender="male">Male</div>
+                            <div class="gender-folder" data-gender="female">Female</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Perfume Category -->
+                <div class="category-card" data-category="perfume">
+                    <div class="category-image" style="background-image: url('https://github.com/forever23-gm/.co/raw/main/IMG-20251001-WA0003.jpg');"></div>
+                    <div class="category-content">
+                        <h3>Perfume</h3>
+                        <p>Scents that make a statement</p>
+                        <div class="gender-folders">
+                            <div class="gender-folder" data-gender="male">Male</div>
+                            <div class="gender-folder" data-gender="female">Female</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Veils Category -->
+                <div class="category-card" data-category="veils">
+                    <div class="category-image" style="background-image: url('https://github.com/forever23-gm/.co/raw/main/IMG-20250925-WA0043.jpg');"></div>
+                    <div class="category-content">
+                        <h3>Veils</h3>
+                        <p>Elegant and modest headwear</p>
+                        <div class="gender-folders">
+                            <div class="gender-folder" data-gender="male">Male</div>
+                            <div class="gender-folder" data-gender="female">Female</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="products">
+        <div class="container">
+            <!-- Clothing Products -->
+            <div id="clothing-products" class="category-products">
+                <a href="#" class="back-button">← Back to Categories</a>
+                <h2 class="section-title">Clothing Collection</h2>
+                
+                <div class="gender-section">
+                    <h3 class="gender-title">Male Clothing</h3>
+                    <div class="products-grid">
+                        <!-- Male Clothing Products -->
+                        <div class="product-card">
+                            <div class="product-image" style="background-image: url('https://github.com/forever23-gm/.co/raw/main/IMG-20250925-WA0024.jpg');"></div>
+                            <div class="product-info">
+                                <h4 class="product-name">Designer Casual Shirt</h4>
+                                <p class="product-origin">Origin: Dubai/UAE</p>
+                                <p class="product-price">D1,800</p>
+                                <a href="https://wa.me/2203802120?text=I'm%20interested%20in%20Designer%20Casual%20Shirt" class="order-button">Order via Wave</a>
+                            </div>
+                        </div>
+                        
+                        <div class="product-card">
+                            <div class="product-image" style="background-image: url('https://github.com/forever23-gm/.co/raw/main/IMG-20250925-WA0025.jpg');"></div>
+                            <div class="product-info">
+                                <h4 class="product-name">Premium Cotton T-Shirt</h4>
+                                <p class="product-origin">Origin: Dubai/UAE</p>
+                                <p class="product-price">D1,500</p>
+                                <a href="https://wa.me/2203802120?text=I'm%20interested%20in%20Premium%20Cotton%20T-Shirt" class="order-button">Order via Wave</a>
+                            </div>
+                        </div>
+                        
+                        <div class="product-card">
+                            <div class="product-image" style="background-image: url('https://github.com/forever23-gm/.co/raw/main/IMG-20250925-WA0026.jpg');"></div>
+                            <div class="product-info">
+                                <h4 class="product-name">Formal Business Shirt</h4>
+                                <p class="product-origin">Origin: Dubai/UAE</p>
+                                <p class="product-price">D2,200</p>
+                                <a href="https://wa.me/2203802120?text=I'm%20interested%20in%20Formal%20Business%20Shirt" class="order-button">Order via Wave</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="gender-section">
+                    <h3 class="gender-title">Female Clothing</h3>
+                    <div class="products-grid">
+                        <!-- Female Clothing Products -->
+                        <div class="product-card">
+                            <div class="product-image" style="background-image: url('https://github.com/forever23-gm/.co/raw/main/IMG-20250925-WA0027.jpg');"></div>
+                            <div class="product-info">
+                                <h4 class="product-name">Elegant Evening Dress</h4>
+                                <p class="product-origin">Origin: Dubai/UAE</p>
+                                <p class="product-price">D2,300</p>
+                                <a href="https://wa.me/2203802120?text=I'm%20interested%20in%20Elegant%20Evening%20Dress" class="order-button">Order via Wave</a>
+                            </div>
+                        </div>
+                        
+                        <div class="product-card">
+                            <div class="product-image" style="background-image: url('https://github.com/forever23-gm/.co/raw/main/IMG-20250925-WA0028.jpg');"></div>
+                            <div class="product-info">
+                                <h4 class="product-name">Designer Abaya Set</h4>
+                                <p class="product-origin">Origin: Dubai/UAE</p>
+                                <p class="product-price">D2,500</p>
+                                <a href="https://wa.me/2203802120?text=I'm%20interested%20in%20Designer%20Abaya%20Set" class="order-button">Order via Wave</a>
+                            </div>
+                        </div>
+                        
+                        <div class="product-card">
+                            <div class="product-image" style="background-image: url('https://github.com/forever23-gm/.co/raw/main/IMG-20250925-WA0029.jpg');"></div>
+                            <div class="product-info">
+                                <h4 class="product-name">Casual Summer Dress</h4>
+                                <p class="product-origin">Origin: Dubai/UAE</p>
+                                <p class="product-price">D1,700</p>
+                                <a href="https://wa.me/2203802120?text=I'm%20interested%20in%20Casual%20Summer%20Dress" class="order-button">Order via Wave</a>
+                            </div>
+                        </div>
+
+                        <div class="product-card">
+                            <div class="product-image" style="background-image: url('https://github.com/forever23-gm/.co/raw/main/IMG-20250925-WA0037.jpg');"></div>
+                            <div class="product-info">
+                                <h4 class="product-name">Traditional Outfit Set</h4>
+                                <p class="product-origin">Origin: Dubai/UAE</p>
+                                <p class="product-price">D2,400</p>
+                                <a href="https://wa.me/2203802120?text=I'm%20interested%20in%20Traditional%20Outfit%20Set" class="order-button">Order via Wave</a>
+                            </div>
+                        </div>
+
+                        <div class="product-card">
+                            <div class="product-image" style="background-image: url('https://github.com/forever23-gm/.co/raw/main/IMG-20250925-WA0039.jpg');"></div>
+                            <div class="product-info">
+                                <h4 class="product-name">Designer Kaftan</h4>
+                                <p class="product-origin">Origin: Dubai/UAE</p>
+                                <p class="product-price">D2,100</p>
+                                <a href="https://wa.me/2203802120?text=I'm%20interested%20in%20Designer%20Kaftan" class="order-button">Order via Wave</a>
+                            </div>
+                        </div>
+
+                        <div class="product-card">
+                            <div class="product-image" style="background-image: url('https://github.com/forever23-gm/.co/raw/main/IMG-20250925-WA0041.jpg');"></div>
+                            <div class="product-info">
+                                <h4 class="product-name">Evening Gown</h4>
+                                <p class="product-origin">Origin: Dubai/UAE</p>
+                                <p class="product-price">D2,500</p>
+                                <a href="https://wa.me/2203802120?text=I'm%20interested%20in%20Evening%20Gown" class="order-button">Order via Wave</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Shoes Products -->
+            <div id="shoes-products" class="category-products">
+                <a href="#" class="back-button">← Back to Categories</a>
+                <h2 class="section-title">Shoes Collection</h2>
+                
+                <div class="gender-section">
+                    <h3 class="gender-title">Male Shoes</h3>
+                    <div class="products-grid">
+                        <div class="product-card">
+                            <div class="product-image" style="background-image: url('https://github.com/forever23-gm/.co/raw/main/IMG-20250925-WA0030.jpg');"></div>
+                            <div class="product-info">
+                                <h4 class="product-name">Leather Formal Shoes</h4>
+                                <p class="product-origin">Origin: Kuwait</p>
+                                <p class="product-price">D1,900</p>
+                                <a href="https://wa.me/2203802120?text=I'm%20interested%20in%20Leather%20Formal%20Shoes" class="order-button">Order via Wave</a>
+                            </div>
+                        </div>
+                        
+                        <div class="product-card">
+                            <div class="product-image" style="background-image: url('https://github.com/forever23-gm/.co/raw/main/IMG-20250925-WA0031.jpg');"></div>
+                            <div class="product-info">
+                                <h4 class="product-name">Casual Sneakers</h4>
+                                <p class="product-origin">Origin: Kuwait</p>
+                                <p class="product-price">D1,600</p>
+                                <a href="https://wa.me/2203802120?text=I'm%20interested%20in%20Casual%20Sneakers" class="order-button">Order via Wave</a>
+                            </div>
+                        </div>
+                        
+                        <div class="product-card">
+                            <div class="product-image" style="background-image: url('https://github.com/forever23-gm/.co/raw/main/IMG-20250925-WA0032.jpg');"></div>
+                            <div class="product-info">
+                                <h4 class="product-name">Designer Loafers</h4>
+                                <p class="product-origin">Origin: Kuwait</p>
+                                <p class="product-price">D2,100</p>
+                                <a href="https://wa.me/2203802120?text=I'm%20interested%20in%20Designer%20Loafers" class="order-button">Order via Wave</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="gender-section">
+                    <h3 class="gender-title">Female Shoes</h3>
+                    <div class="products-grid">
+                        <div class="product-card">
+                            <div class="product-image" style="background-image: url('https://github.com/forever23-gm/.co/raw/main/IMG-20250925-WA0033.jpg');"></div>
+                            <div class="product-info">
+                                <h4 class="product-name">Elegant Heels</h4>
+                                <p class="product-origin">Origin: Kuwait</p>
+                                <p class="product-price">D1,800</p>
+                                <a href="https://wa.me/2203802120?text=I'm%20interested%20in%20Elegant%20Heels" class="order-button">Order via Wave</a>
+                            </div>
+                        </div>
+                        
+                        <div class="product-card">
+                            <div class="product-image" style="background-image: url('https://github.com/forever23-gm/.co/raw/main/IMG-20250925-WA0034.jpg');"></div>
+                            <div class="product-info">
+                                <h4 class="product-name">Designer Sandals</h4>
+                                <p class="product-origin">Origin: Kuwait</p>
+                                <p class="product-price">D1,500</p>
+                                <a href="https://wa.me/2203802120?text=I'm%20interested%20in%20Designer%20Sandals" class="order-button">Order via Wave</a>
+                            </div>
+                        </div>
+                        
+                        <div class="product-card">
+                            <div class="product-image" style="background-image: url('https://github.com/forever23-gm/.co/raw/main/IMG-20250925-WA0035.jpg');"></div>
+                            <div class="product-info">
+                                <h4 class="product-name">Casual Flats</h4>
+                                <p class="product-origin">Origin: Kuwait</p>
+                                <p class="product-price">D1,400</p>
+                                <a href="https://wa.me/2203802120?text=I'm%20interested%20in%20Casual%20Flats" class="order-button">Order via Wave</a>
+                            </div>
+                        </div>
+
+                        <div class="product-card">
+                            <div class="product-image" style="background-image: url('https://github.com/forever23-gm/.co/raw/main/IMG-20250925-WA0036.jpg');"></div>
+                            <div class="product-info">
+                                <h4 class="product-name">Evening Dress Shoes</h4>
+                                <p class="product-origin">Origin: Kuwait</p>
+                                <p class="product-price">D1,900</p>
+                                <a href="https://wa.me/2203802120?text=I'm%20interested%20in%20Evening%20Dress%20Shoes" class="order-button">Order via Wave</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Watches Products -->
+            <div id="watches-products" class="category-products">
+                <a href="#" class="back-button">← Back to Categories</a>
+                <h2 class="section-title">Watches Collection</h2>
+                
+                <div class="gender-section">
+                    <h3 class="gender-title">Male Watches</h3>
+                    <div class="products-grid">
+                        <div class="product-card">
+                            <div class="product-image" style="background-image: url('https://github.com/forever23-gm/.co/raw/main/IMG-20250925-WA0091.jpg');"></div>
+                            <div class="product-info">
+                                <h4 class="product-name">Luxury Chronograph Watch</h4>
+                                <p class="product-origin">Origin: Switzerland</p>
+                                <p class="product-price">D2,500</p>
+                                <a href="https://wa.me/2203802120?text=I'm%20interested%20in%20Luxury%20Chronograph%20Watch" class="order-button">Order via Wave</a>
+                            </div>
+                        </div>
+                        
+                        <div class="product-card">
+                            <div class="product-image" style="background-image: url('https://github.com/forever23-gm/.co/raw/main/IMG-20250925-WA0092.jpg');"></div>
+                            <div class="product-info">
+                                <h4 class="product-name">Business Classic Watch</h4>
+                                <p class="product-origin">Origin: Switzerland</p>
+                                <p class="product-price">D2,300</p>
+                                <a href="https://wa.me/2203802120?text=I'm%20interested%20in%20Business%20Classic%20Watch" class="order-button">Order via Wave</a>
+                            </div>
+                        </div>
+                        
+                        <div class="product-card">
+                            <div class="product-image" style="background-image: url('https://github.com/forever23-gm/.co/raw/main/IMG-20250925-WA0093.jpg');"></div>
+                            <div class="product-info">
+                                <h4 class="product-name">Sports Smart Watch</h4>
+                                <p class="product-origin">Origin: Switzerland</p>
+                                <p class="product-price">D2,400</p>
+                                <a href="https://wa.me/2203802120?text=I'm%20interested%20in%20Sports%20Smart%20Watch" class="order-button">Order via Wave</a>
+                            </div>
+                        </div>
+
+                        <div class="product-card">
+                            <div class="product-image" style="background-image: url('https://github.com/forever23-gm/.co/raw/main/IMG-20250925-WA0094.jpg');"></div>
+                            <div class="product-info">
+                                <h4 class="product-name">Elegant Dress Watch</h4>
+                                <p class="product-origin">Origin: Switzerland</p>
+                                <p class="product-price">D2,200</p>
+                                <a href="https://wa.me/2203802120?text=I'm%20interested%20in%20Elegant%20Dress%20Watch" class="order-button">Order via Wave</a>
+                            </div>
+                        </div>
+
+                        <div class="product-card">
+                            <div class="product-image" style="background-image: url('https://github.com/forever23-gm/.co/raw/main/IMG-20250925-WA0095.jpg');"></div>
+                            <div class="product-info">
+                                <h4 class="product-name">Limited Edition Watch</h4>
+                                <p class="product-origin">Origin: Switzerland</p>
+                                <p class="product-price">D2,800</p>
+                                <a href="https://wa.me/2203802120?text=I'm%20interested%20in%20Limited%20Edition%20Watch" class="order-button">Order via Wave</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="gender-section">
+                    <h3 class="gender-title">Female Watches</h3>
+                    <div class="products-grid">
+                        <div class="product-card">
+                            <div class="product-image" style="background-image: url('https://github.com/forever23-gm/.co/raw/main/IMG-20250925-WA0096.jpg');"></div>
+                            <div class="product-info">
+                                <h4 class="product-name">Diamond Accent Watch</h4>
+                                <p class="product-origin">Origin: Switzerland</p>
+                                <p class="product-price">D2,300</p>
+                                <a href="https://wa.me/2203802120?text=I'm%20interested%20in%20Diamond%20Accent%20Watch" class="order-button">Order via Wave</a>
+                            </div>
+                        </div>
+                        
+                        <div class="product-card">
+                            <div class="product-image" style="background-image: url('https://github.com/forever23-gm/.co/raw/main/IMG-20250925-WA0097.jpg');"></div>
+                            <div class="product-info">
+                                <h4 class="product-name">Fashion Bracelet Watch</h4>
+                                <p class="product-origin">Origin: Switzerland</p>
+                                <p class="product-price">D2,100</p>
+                                <a href="https://wa.me/2203802120?text=I'm%20interested%20in%20Fashion%20Bracelet%20Watch" class="order-button">Order via Wave</a>
+                            </div>
+                        </div>
+                        
+                        <div class="product-card">
+                            <div class="product-image" style="background-image: url('https://github.com/forever23-gm/.co/raw/main/IMG-20250925-WA0098.jpg');"></div>
+                            <div class="product-info">
+                                <h4 class="product-name">Rose Gold Elegant Watch</h4>
+                                <p class="product-origin">Origin: Switzerland</p>
+                                <p class="product-price">D2,400</p>
+                                <a href="https://wa.me/2203802120?text=I'm%20interested%20in%20Rose%20Gold%20Elegant%20Watch" class="order-button">Order via Wave</a>
+                            </div>
+                        </div>
+
+                        <div class="product-card">
+                            <div class="product-image" style="background-image: url('https://github.com/forever23-gm/.co/raw/main/IMG-20250925-WA0099.jpg');"></div>
+                            <div class="product-info">
+                                <h4 class="product-name">Luxury Gold Watch</h4>
+                                <p class="product-origin">Origin: Switzerland</p>
+                                <p class="product-price">D2,700</p>
+                                <a href="https://wa.me/2203802120?text=I'm%20interested%20in%20Luxury%20Gold%20Watch" class="order-button">Order via Wave</a>
+                            </div>
+                        </div>
+
+                        <div class="product-card">
+                            <div class="product-image" style="background-image: url('https://github.com/forever23-gm/.co/raw/main/IMG-20250925-WA0100.jpg');"></div>
+                            <div class="product-info">
+                                <h4 class="product-name">Classic Leather Watch</h4>
+                                <p class="product-origin">Origin: Switzerland</p>
+                                <p class="product-price">D2,200</p>
+                                <a href="https://wa.me/2203802120?text=I'm%20interested%20in%20Classic%20Leather%20Watch" class="order-button">Order via Wave</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bags Products -->
+            <div id="bags-products" class="category-products">
+                <a href="#" class="back-button">← Back to Categories</a>
+                <h2 class="section-title">Bags Collection</h2>
+                
+                <div class="gender-section">
+                    <h3 class="gender-title">Male Bags</h3>
+                    <div class="products-grid">
+                        <div class="product-card">
+                            <div class="product-image" style="background-image: url('https://github.com/forever23-gm/.co/raw/main/IMG-20250925-WA0047.jpg');"></div>
+                            <div class="product-info">
+                                <h4 class="product-name">Leather Messenger Bag</h4>
+                                <p class="product-origin">Origin: Turkey</p>
+                                <p class="product-price">D1,800</p>
+                                <a href="https://wa.me/2203802120?text=I'm%20interested%20in%20Leather%20Messenger%20Bag" class="order-button">Order via Wave</a>
+                            </div>
+                        </div>
+                        
+                        <div class="product-card">
+                            <div class="product-image" style="background-image: url('https://github.com/forever23-gm/.co/raw/main/IMG-20250925-WA0048.jpg');"></div>
+                            <div class="product-info">
+                                <h4 class="product-name">Business Briefcase</h4>
+                                <p class="product-origin">Origin: Turkey</p>
+                                <p class="product-price">D2,100</p>
+                                <a href="https://wa.me/2203802120?text=I'm%20interested%20in%20Business%20Briefcase" class="order-button">Order via Wave</a>
+                            </div>
+                        </div>
+                        
+                        <div class="product-card">
+                            <div class="product-image" style="background-image: url('https://github.com/forever23-gm/.co/raw/main/IMG-20250925-WA0049.jpg');"></div>
+                            <div class="product-info">
+                                <h4 class="product-name">Casual Backpack</h4>
+                                <p class="product-origin">Origin: Turkey</p>
+                                <p class="product-price">D1,600</p>
+                                <a href="https://wa.me/2203802120?text=I'm%20interested%20in%20Casual%20Backpack" class="order-button">Order via Wave</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="gender-section">
+                    <h3 class="gender-title">Female Bags</h3>
+                    <div class="products-grid">
+                        <div class="product-card">
+                            <div class="product-image" style="background-image: url('https://github.com/forever23-gm/.co/raw/main/IMG-20250925-WA0050.jpg');"></div>
+                            <div class="product-info">
+                                <h4 class="product-name">Designer Handbag</h4>
+                                <p class="product-origin">Origin: Turkey</p>
+                                <p class="product-price">D2,200</p>
+                                <a href="https://wa.me/2203802120?text=I'm%20interested%20in%20Designer%20Handbag" class="order-button">Order via Wave</a>
+                            </div>
+                        </div>
+                        
+                        <div class="product-card">
+                            <div class="product-image" style="background-image: url('https://github.com/forever23-gm/.co/raw/main/IMG-20250925-WA0051.jpg');"></div>
+                            <div class="product-info">
+                                <h4 class="product-name">Evening Clutch</h4>
+                                <p class="product-origin">Origin: Turkey</p>
+                                <p class="product-price">D1,500</p>
+                                <a href="https://wa.me/2203802120?text=I'm%20interested%20in%20Evening%20Clutch" class="order-button">Order via Wave</a>
+                            </div>
+                        </div>
+                        
+                        <div class="product-card">
+                            <div class="product-image" style="background-image: url('https://github.com/forever23-gm/.co/raw/main/IMG-20250925-WA0052.jpg');"></div>
+                            <div class="product-info">
+                                <h4 class="product-name">Casual Tote Bag</h4>
+                                <p class="product-origin">Origin: Turkey</p>
+                                <p class="product-price">D1,700</p>
+                                <a href="https://wa.me/2203802120?text=I'm%20interested%20in%20Casual%20Tote%20Bag" class="order-button">Order via Wave</a>
+                            </div>
+                        </div>
+
+                        <div class="product-card">
+                            <div class="product-image" style="background-image: url('https://github.com/forever23-gm/.co/raw/main/IMG-20250925-WA0053.jpg');"></div>
+                            <div class="product-info">
+                                <h4 class="product-name">Luxury Shoulder Bag</h4>
+                                <p class="product-origin">Origin: Turkey</p>
+                                <p class="product-price">D2,300</p>
+                                <a href="https://wa.me/2203802120?text=I'm%20interested%20in%20Luxury%20Shoulder%20Bag" class="order-button">Order via Wave</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Perfume Products -->
+            <div id="perfume-products" class="category-products">
+                <a href="#" class="back-button">← Back to Categories</a>
+                <h2 class="section-title">Perfume Collection</h2>
+                
+                <div class="gender-section">
+                    <h3 class="gender-title">Male Perfume</h3>
+                    <div class="products-grid">
+                        <div class="product-card">
+                            <div class="product-image" style="background-image: url('https://github.com/forever23-gm/.co/raw/main/IMG-20251001-WA0003.jpg');"></div>
+                            <div class="product-info">
+                                <h4 class="product-name">Premium Cologne Set</h4>
+                                <p class="product-origin">Origin: Dubai/UAE</p>
+                                <p class="product-price">D1,800</p>
+                                <a href="https://wa.me/2203802120?text=I'm%20interested%20in%20Premium%20Cologne%20Set" class="order-button">Order via Wave</a>
+                            </div>
+                        </div>
+                        
+                        <div class="product-card">
+                            <div class="product-image" style="background-image: url('https://github.com/forever23-gm/.co/raw/main/IMG-20251001-WA0004.jpg');"></div>
+                            <div class="product-info">
+                                <h4 class="product-name">Luxury Fragrance</h4>
+                                <p class="product-origin">Origin: Dubai/UAE</p>
+                                <p class="product-price">D2,100</p>
+                                <a href="https://wa.me/2203802120?text=I'm%20interested%20in%20Luxury%20Fragrance" class="order-button">Order via Wave</a>
+                            </div>
+                        </div>
+                        
+                        <div class="product-card">
+                            <div class="product-image" style="background-image: url('https://github.com/forever23-gm/.co/raw/main/IMG-20251001-WA0005.jpg');"></div>
+                            <div class="product-info">
+                                <h4 class="product-name">Executive Scent</h4>
+                                <p class="product-origin">Origin: Dubai/UAE</p>
+                                <p class="product-price">D1,900</p>
+                                <a href="https://wa.me/2203802120?text=I'm%20interested%20in%20Executive%20Scent" class="order-button">Order via Wave</a>
+                            </div>
+                        </div>
+
+                        <div class="product-card">
+                            <div class="product-image" style="background-image: url('https://github.com/forever23-gm/.co/raw/main/IMG-20251001-WA0006.jpg');"></div>
+                            <div class="product-info">
+                                <h4 class="product-name">Woody Essence</h4>
+                                <p class="product-origin">Origin: Dubai/UAE</p>
+                                <p class="product-price">D2,000</p>
+                                <a href="https://wa.me/2203802120?text=I'm%20interested%20in%20Woody%20Essence" class="order-button">Order via Wave</a>
+                            </div>
+                        </div>
+
+                        <div class="product-card">
+                            <div class="product-image" style="background-image: url('https://github.com/forever23-gm/.co/raw/main/IMG-20251001-WA0007.jpg');"></div>
+                            <div class="product-info">
+                                <h4 class="product-name">Fresh Citrus Blend</h4>
+                                <p class="product-origin">Origin: Dubai/UAE</p>
+                                <p class="product-price">D1,700</p>
+                                <a href="https://wa.me/2203802120?text=I'm%20interested%20in%20Fresh%20Citrus%20Blend" class="order-button">Order via Wave</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="gender-section">
+                    <h3 class="gender-title">Female Perfume</h3>
+                    <div class="products-grid">
+                        <div class="product-card">
+                            <div class="product-image" style="background-image: url('https://github.com/forever23-gm/.co/raw/main/IMG-20251001-WA0008.jpg');"></div>
+                            <div class="product-info">
+                                <h4 class="product-name">Floral Elegance</h4>
+                                <p class="product-origin">Origin: Dubai/UAE</p>
+                                <p class="product-price">D2,200</p>
+                                <a href="https://wa.me/2203802120?text=I'm%20interested%20in%20Floral%20Elegance" class="order-button">Order via Wave</a>
+                            </div>
+                        </div>
+                        
+                        <div class="product-card">
+                            <div class="product-image" style="background-image: url('https://github.com/forever23-gm/.co/raw/main/IMG-20251001-WA0009.jpg');"></div>
+                            <div class="product-info">
+                                <h4 class="product-name">Romantic Bouquet</h4>
+                                <p class="product-origin">Origin: Dubai/UAE</p>
+                                <p class="product-price">D2,100</p>
+                                <a href="https://wa.me/2203802120?text=I'm%20interested%20in%20Romantic%20Bouquet" class="order-button">Order via Wave</a>
+                            </div>
+                        </div>
+                        
+                        <div class="product-card">
+                            <div class="product-image" style="background-image: url('https://github.com/forever23-gm/.co/raw/main/IMG-20251001-WA0010.jpg');"></div>
+                            <div class="product-info">
+                                <h4 class="product-name">Exotic Night</h4>
+                                <p class="product-origin">Origin: Dubai/UAE</p>
+                                <p class="product-price">D2,300</p>
+                                <a href="https://wa.me/2203802120?text=I'm%20interested%20in%20Exotic%20Night" class="order-button">Order via Wave</a>
+                            </div>
+                        </div>
+
+                        <div class="product-card">
+                            <div class="product-image" style="background-image: url('https://github.com/forever23-gm/.co/raw/main/IMG-20251001-WA0011.jpg');"></div>
+                            <div class="product-info">
+                                <h4 class="product-name">Luxury Perfume Set</h4>
+                                <p class="product-origin">Origin: Dubai/UAE</p>
+                                <p class="product-price">D2,500</p>
+                                <a href="https://wa.me/2203802120?text=I'm%20interested%20in%20Luxury%20Perfume%20Set" class="order-button">Order via Wave</a>
+                            </div>
+                        </div>
+
+                        <div class="product-card">
+                            <div class="product-image" style="background-image: url('https://github.com/forever23-gm/.co/raw/main/IMG-20251001-WA0012.jpg');"></div>
+                            <div class="product-info">
+                                <h4 class="product-name">Delicate Blossom</h4>
+                                <p class="product-origin">Origin: Dubai/UAE</p>
+                                <p class="product-price">D1,900</p>
+                                <a href="https://wa.me/2203802120?text=I'm%20interested%20in%20Delicate%20Blossom" class="order-button">Order via Wave</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Veils Products -->
+            <div id="veils-products" class="category-products">
+                <a href="#" class="back-button">← Back to Categories</a>
+                <h2 class="section-title">Veils Collection</h2>
+                
+                <div class="gender-section">
+                    <h3 class="gender-title">Male Veils</h3>
+                    <div class="products-grid">
+                        <div class="product-card">
+                            <div class="product-image" style="background-image: url('https://github.com/forever23-gm/.co/raw/main/IMG-20250925-WA0043.jpg');"></div>
+                            <div class="product-info">
+                                <h4 class="product-name">Traditional Headwear</h4>
+                                <p class="product-origin">Origin: Dubai/UAE</p>
+                                <p class="product-price">D1,200</p>
+                                <a href="https://wa.me/2203802120?text=I'm%20interested%20in%20Traditional%20Headwear" class="order-button">Order via Wave</a>
+                            </div>
+                        </div>
+                        
+                        <div class="product-card">
+                            <div class="product-image" style="background-image: url('https://github.com/forever23-gm/.co/raw/main/IMG-20250925-WA0044.jpg');"></div>
+                            <div class="product-info">
+                                <h4 class="product-name">Embroidered Scarf</h4>
+                                <p class="product-origin">Origin: Dubai/UAE</p>
+                                <p class="product-price">D1,400</p>
+                                <a href="https://wa.me/2203802120?text=I'm%20interested%20in%20Embroidered%20Scarf" class="order-button">Order via Wave</a>
+                            </div>
+                        </div>
+                        
+                        <div class="product-card">
+                            <div class="product-image" style="background-image: url('https://github.com/forever23-gm/.co/raw/main/IMG-20250925-WA0045.jpg');"></div>
+                            <div class="product-info">
+                                <h4 class="product-name">Premium Cotton Veil</h4>
+                                <p class="product-origin">Origin: Dubai/UAE</p>
+                                <p class="product-price">D1,300</p>
+                                <a href="https://wa.me/2203802120?text=I'm%20interested%20in%20Premium%20Cotton%20Veil" class="order-button">Order via Wave</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="gender-section">
+                    <h3 class="gender-title">Female Veils</h3>
+                    <div class="products-grid">
+                        <div class="product-card">
+                            <div class="product-image" style="background-image: url('https://github.com/forever23-gm/.co/raw/main/IMG-20250925-WA0038.jpg');"></div>
+                            <div class="product-info">
+                                <h4 class="product-name">Designer Hijab Set</h4>
+                                <p class="product-origin">Origin: Dubai/UAE</p>
+                                <p class="product-price">D1,600</p>
+                                <a href="https://wa.me/2203802120?text=I'm%20interested%20in%20Designer%20Hijab%20Set" class="order-button">Order via Wave</a>
+                            </div>
+                        </div>
+                        
+                        <div class="product-card">
+                            <div class="product-image" style="background-image: url('https://github.com/forever23-gm/.co/raw/main/IMG-20250925-WA0040.jpg');"></div>
+                            <div class="product-info">
+                                <h4 class="product-name">Elegant Silk Scarf</h4>
+                                <p class="product-origin">Origin: Dubai/UAE</p>
+                                <p class="product-price">D1,800</p>
+                                <a href="https://wa.me/2203802120?text=I'm%20interested%20in%20Elegant%20Silk%20Scarf" class="order-button">Order via Wave</a>
+                            </div>
+                        </div>
+                        
+                        <div class="product-card">
+                            <div class="product-image" style="background-image: url('https://github.com/forever23-gm/.co/raw/main/IMG-20250925-WA0042.jpg');"></div>
+                            <div class="product-info">
+                                <h4 class="product-name">Luxury Abaya Veil</h4>
+                                <p class="product-origin">Origin: Dubai/UAE</p>
+                                <p class="product-price">D2,000</p>
+                                <a href="https://wa.me/2203802120?text=I'm%20interested%20in%20Luxury%20Abaya%20Veil" class="order-button">Order via Wave</a>
+                            </div>
+                        </div>
+
+                        <div class="product-card">
+                            <div class="product-image" style="background-image: url('https://github.com/forever23-gm/.co/raw/main/IMG-20250925-WA0046.jpg');"></div>
+                            <div class="product-info">
+                                <h4 class="product-name">Casual Daily Veil</h4>
+                                <p class="product-origin">Origin: Dubai/UAE</p>
+                                <p class="product-price">D1,400</p>
+                                <a href="https://wa.me/2203802120?text=I'm%20interested%20in%20Casual%20Daily%20Veil" class="order-button">Order via Wave</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Forever23</h3>
+                    <p>Your premier destination for quality fashion items from around the world. Located in Bakau, The Gambia.</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Contact Us</h3>
+                    <p>WhatsApp: +220 380 2120</p>
+                    <p>Email: knjie908@gmail.com</p>
+                    <p>Location: Bakau, The Gambia</p>
+                    <p>Wave: +220 380 2120</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <a href="#categories">Collections</a>
+                    <a href="https://wa.me/2203802120">Order via WhatsApp</a>
+                    <a href="mailto:knjie908@gmail.com">Email Inquiry</a>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 Forever23. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // JavaScript to handle category and gender selection
+        document.addEventListener('DOMContentLoaded', function() {
+            const categoryCards = document.querySelectorAll('.category-card');
+            const categoryProducts = document.querySelectorAll('.category-products');
+            const backButtons = document.querySelectorAll('.back-button');
+            
+            // Hide all product sections initially
+            categoryProducts.forEach(section => {
+                section.style.display = 'none';
+            });
+            
+            // Add click event to category cards
+            categoryCards.forEach(card => {
+                card.addEventListener('click', function() {
+                    const category = this.getAttribute('data-category');
+                    
+                    // Hide all product sections
+                    categoryProducts.forEach(section => {
+                        section.style.display = 'none';
+                    });
+                    
+                    // Show the selected category
+                    const selectedCategory = document.getElementById(`${category}-products`);
+                    if (selectedCategory) {
+                        selectedCategory.style.display = 'block';
+                        window.scrollTo({
+                            top: selectedCategory.offsetTop - 100,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+            
+            // Add click event to back buttons
+            backButtons.forEach(button => {
+                button.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    // Hide all product sections
+                    categoryProducts.forEach(section => {
+                        section.style.display = 'none';
+                    });
+                    
+                    // Scroll back to categories
+                    window.scrollTo({
+                        top: document.getElementById('categories').offsetTop - 100,
+                        behavior: 'smooth'
+                    });
+                });
+            });
+            
+            // Add click event to gender folders
+            const genderFolders = document.querySelectorAll('.gender-folder');
+            genderFolders.forEach(folder => {
+                folder.addEventListener('click', function(e) {
+                    e.stopPropagation(); // Prevent triggering the category card click
+                    
+                    const categoryCard = this.closest('.category-card');
+                    const category = categoryCard.getAttribute('data-category');
+                    const gender = this.getAttribute('data-gender');
+                    
+                    // Hide all product sections
+                    categoryProducts.forEach(section => {
+                        section.style.display = 'none';
+                    });
+                    
+                    // Show the selected category
+                    const selectedCategory = document.getElementById(`${category}-products`);
+                    if (selectedCategory) {
+                        selectedCategory.style.display = 'block';
+                        
+                        // Scroll to the specific gender section
+                        const genderSections = selectedCategory.querySelectorAll('.gender-section');
+                        const targetSection = gender === 'male' ? genderSections[0] : genderSections[1];
+                        if (targetSection) {
+                            window.scrollTo({
+                                top: targetSection.offsetTop - 100,
+                                behavior: 'smooth'
+                            });
+                        } else {
+                            window.scrollTo({
+                                top: selectedCategory.offsetTop - 100,
+                                behavior: 'smooth'
+                            });
+                        }
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
